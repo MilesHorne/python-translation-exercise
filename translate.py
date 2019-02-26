@@ -15,7 +15,7 @@ def translate_sequence(rna_sequence, genetic_code):
     """
     if len(rna_sequence) < 3:
         return('')
-    elif rna_sequence == 'UAG' or 'UAA' or 'UGA':
+    elif rna_sequence.startswith('U') == True:
         return('')
     else:
         rna_sequence=rna_sequence.upper()
@@ -36,7 +36,10 @@ def get_all_translations(rna_sequence, genetic_code):
     If no amino acids can be translated from `rna_sequence`, an empty list is
     returned.
     """
-    pass
+    if rna_sequence == '':
+        return('')
+    else:
+        pass
 
 def get_reverse(sequence):
     """Reverse orientation of `sequence`.
