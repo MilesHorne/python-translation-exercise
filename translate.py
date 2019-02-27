@@ -15,11 +15,17 @@ def translate_sequence(rna_sequence, genetic_code):
     """
     if len(rna_sequence) < 3:
         return('')
-    elif rna_sequence.startswith('U') == True:
-        return('')
     else:
-        rna_sequence=rna_sequence.upper()
-        pass
+        sequence=rna_sequence.upper()
+
+        while len(sequence) >= 3:
+            codon = sequence[0:3]
+            sequence = sequence[3:]
+
+            if genetic_code[codon] =='*':
+                return('')
+            else:
+                return('')
 
 def get_all_translations(rna_sequence, genetic_code):
     """Get a list of all amino acid sequences encoded by an RNA sequence.
