@@ -13,19 +13,22 @@ def translate_sequence(rna_sequence, genetic_code):
     If `rna_sequence` is less than 3 bases long, or starts with a stop codon,
     an empty string is returned.
     """
-    if len(rna_sequence) < 3:
-        return('')
-    else:
-        sequence=rna_sequence.upper()
-
-        while len(sequence) >= 3:
-            codon = sequence[0:3]
-            sequence = sequence[3:]
-
-            if genetic_code[codon] =='*':
-                return('')
+    if rna_sequence:
+        r_seq=rna_sequence.upper()
+        if len(r_seq) >= 3:
+            if r_seq[0:3] == 'UAA' or 'UGA' or 'UAG':
+                return ''
             else:
-                return('')
+                for x in range(0, len(r_seq), 3):
+                    codon = r_seq[0:3]
+                    if genetic_code[codon] == '*':
+                        break
+                    else:
+                        return 'genetic_code[codon]'
+        else:
+            return ''
+    else:
+        return ''
 
 def get_all_translations(rna_sequence, genetic_code):
     """Get a list of all amino acid sequences encoded by an RNA sequence.
