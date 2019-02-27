@@ -48,44 +48,32 @@ def get_all_translations(rna_sequence, genetic_code):
         pass
 
 def get_reverse(sequence):
-    """Reverse orientation of `sequence`.
-
-    Returns a string with `sequence` in the reverse order.
-
-    If `sequence` is empty, an empty string is returned.
-    """
     if sequence:
         seq=sequence.upper()
-        rev_seq=seq[::-1]
-        return rev_seq
+        reverse_seq=seq[::-1]
+        return reverse_seq
     else:
         return ''
     pass
 
 def get_complement(sequence):
-    """Get the complement of `sequence`.
-
-    Returns a string with the complementary sequence of `sequence`.
-
-    If `sequence` is empty, an empty string is returned.
-    """
-    if sequence == '':
-        return('')
+    if sequence:
+        seq=list(sequence.upper())
+        complements = {'C':'G','G':'C','U':'A','A':'U'}
+        seq=[complements[base] for base in seq]
+        return ''.join(seq)
     else:
-        pass
+        return ''
+    pass
 
 def reverse_and_complement(sequence):
-    """Get the reversed and complemented form of `sequence`.
-
-    Returns a string that is the reversed and complemented sequence
-    of `sequence`.
-
-    If `sequence` is empty, an empty string is returned.
-    """
-    if sequence == '':
-        return('')
+    if sequence:
+        seq = get_reverse(sequence)
+        rev_comp = get_complement(seq)
+        return rev_comp
     else:
-        pass
+        return ''
+    pass
 
 def get_longest_peptide(rna_sequence, genetic_code):
     """Get the longest peptide encoded by an RNA sequence.
