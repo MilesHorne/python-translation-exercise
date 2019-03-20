@@ -108,12 +108,17 @@ if __name__ == '__main__':
             "AGU"
             "ACA"
             "GCG")
-    longest_peptide = get_longest_peptide(rna_sequence = rna_seq,
-            genetic_code = genetic_code)
-    assert isinstance(longest_peptide, str), "Oops: the longest peptide is {0}, not a string".format(longest_peptide)
-    message = "The longest peptide encoded by\n\t'{0}'\nis\n\t'{1}'\n".format(
-            rna_seq,
-            longest_peptide)
-    sys.stdout.write(message)
+if len(sys.argv) != 2:
+    print("Script Needs RNA Seq")
+	sys.exit()
+else:
+    longest_peptide = get_longest_peptide(rna_sequence = sys.argv[1],
+        genetic_code = genetic_code)
+assert isinstance(longest_peptide, str), "Oops: the longest peptide is {0}, not a string".format(longest_peptide)
+message = "The longest peptide encoded by\n\t'{0}'\nis\n\t'{1}'\n".format(
+	    rna_seq,
+	    sys.argv[1],
+	    longest_peptide)
+	sys.stdout.write(message)
     if longest_peptide == "MYWHATAPYTHQNISTA":
         sys.stdout.write("Indeed.\n")
